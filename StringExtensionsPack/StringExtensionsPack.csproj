@@ -4,6 +4,15 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<PackageId>StringExtensionsPack</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Fernando Fujikawa</Authors>
+	<Company>None</Company>
+	<PackageDescription>String Extensions Package</PackageDescription>
+	<Description>String Extensions Package</Description>
+	<AssemblyVersion>1.0.0.0</AssemblyVersion>
+	<FileVersion>1.0.0.0</FileVersion>
+	<RepositoryUrl>https://github.com/ferfujikawa/PackageCreation</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
