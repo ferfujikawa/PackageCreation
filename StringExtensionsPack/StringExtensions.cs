@@ -1,0 +1,15 @@
+﻿namespace StringExtensionPack
+{
+    public static class StringExtensions
+    {
+        public static string ToCamelCase(this String text)
+        {
+            var words = text.Split(new[] { "_", " " }, StringSplitOptions.RemoveEmptyEntries);
+            var leadWord = words[0].ToLower();
+            var tailWords = words.Skip(1)
+                .Select(word => char.ToUpper(word[0]) + word.Substring(1))
+                .ToArray();
+            return $"{leadWord}{string.Join(string.Empty, tailWords)}";
+        }
+    }
+}
