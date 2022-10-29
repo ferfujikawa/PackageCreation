@@ -1,0 +1,30 @@
+name: Publish
+
+on:
+  workflow_run:
+    workflows: ["Build and test lib"]
+    types:
+      - completed
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Create the Package
+        run: dotnet pack --configuration Release
+
+      - name: Publish the Package
+        run: dotnet nuget push "StringExtensionsPack/bin/Release/*.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/ferfujikawa/index.json
